@@ -18,7 +18,7 @@ const OurServices = () => {
 
     const services = [
       {
-        icon: <FaTruck className="w-10 h-10 md:w-12 md:h-12 text-primary" />,
+        icon: <FaTruck className="w-10 h-10 md:w-12 md:h-12  text-yellow-400" />,
         title: "Express & Standard Delivery",
         description:
           "We deliver parcels within 24-72 hours in Dhaka, Chittagong, Sylhet, Khulna, and Rajshahi. Express delivery available in Dhaka within 4-6 hours from pick-up to drop-off.",
