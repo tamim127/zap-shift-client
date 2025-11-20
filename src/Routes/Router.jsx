@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router";
 import MainLayouts from "../Layouts/MainLayouts";
 import Home from "../Pages/Home/Home/Home";
 import Coverage from "../Pages/Coverage/Coverage";
+import About from "../Pages/About/About";
+
 
 export const router = createBrowserRouter([
   {
@@ -22,10 +24,10 @@ export const router = createBrowserRouter([
       //     path: "/services",
       //     element:<Services/> ,
       // },
-      // {
-      //     path: "/about",
-      //     element:<About/> ,
-      // },
+      {
+          path: "/about",
+          element:<About/> ,
+      },
       // {
       //     path: "/pricing",
       //     element:<Pricing/> ,
