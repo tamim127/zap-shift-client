@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ReviewCard from "./ReviewCard";
-import img from '../../../assets/customer-top.png'
+import img from "../../../assets/customer-top.png";
 
 // Loader Component
 const Loader = () => (
@@ -99,14 +99,6 @@ const TestimonialSlider = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-
-        {/* Custom Navigation */}
-        <button className="swiper-button-prev-custom absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-50 transition">
-          <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8 text-gray-700" />
-        </button>
-        <button className="swiper-button-next-custom absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-50 transition">
-          <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8 text-gray-700" />
-        </button>
       </div>
     </div>
   );

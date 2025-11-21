@@ -34,12 +34,12 @@ const About = () => {
   const activeContent = data.find((d) => d.id === activeTab)?.content;
 
   return (
-    <section className="my-10 px-4 sm:px-6 lg:px-10">
+    <section className=" max-w-7xl my-20 mx-auto  px-4 sm:px-6 lg:px-10">
       <div className="bg-white p-6 rounded-2xl shadow-md max-w-5xl mx-auto">
         {/* Header */}
         <div className="space-y-4 mb-10 ">
           <h1 className="text-4xl font-bold">About Us</h1>
-          <p className="text-gray-700 text-lg sm:text-base">
+          <p className="text-gray-700 text-xl sm:text-base">
             Enjoy fast, reliable parcel delivery with real-time tracking and
             zero hassle. From personal <br /> packages to business shipments —
             we deliver on time, every time.
