@@ -11,7 +11,6 @@ const Footer = () => {
         className="text-base-200 font-medium hover:text-primary "
         to="services"
       >
-        {" "}
         Services
       </NavLink>
     </li>,
@@ -20,7 +19,6 @@ const Footer = () => {
         className="text-base-200 font-medium hover:text-primary "
         to="coverage"
       >
-        {" "}
         Coverage
       </NavLink>
     </li>,

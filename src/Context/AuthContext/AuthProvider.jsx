@@ -5,10 +5,9 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
-
   signInWithPopup,
-
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../../Firebase/firebase.config";
 
@@ -38,9 +37,14 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  const updateUserProfile = (profile) => {
+    return updateProfile(auth.currentUser, profile);
+  };
+
   useEffect(() => {
     const unSbuscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+        setUser(currentUser);
+        setLoading(false);
     });
     return () => {
       unSbuscribe();
@@ -54,6 +58,7 @@ const AuthProvider = ({ children }) => {
     signInUser,
     signInGoogle,
     logOut,
+    updateUserProfile,
   };
 
   return <AuthContext value={authInfo}>{children}</AuthContext>;

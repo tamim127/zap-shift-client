@@ -8,8 +8,11 @@ import AuthLayout from "../Layouts/AuthLayout";
 import Login from "../Components/Login/Login";
 import Register from "../Components/Register/Register";
 import ForgotPassword from "../Components/ForgotPassword/ForgotPassword";
-
-
+import PrivateRoutes from "../Routes/PrivateRoutes";
+import BeARider from "../Pages/Be a Rider/BeARider";
+import SendParcel from "../Pages/SendPercel/SendPercel";
+import MyParcel from "../Pages/DashBoard/MyParcel/MyParcels";
+import DashboardLayout from "../Layouts/DashboardLayout";
 
 export const router = createBrowserRouter([
   {
@@ -21,8 +24,8 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-          path: "/services",
-          element:<Services/> ,
+        path: "/services",
+        element: <Services />,
       },
       {
         path: "/coverage",
@@ -39,11 +42,24 @@ export const router = createBrowserRouter([
       //     path: "/pricing",
       //     element:<Pricing/> ,
       // },
-      // {
-      //     path: "/rider",
-      //     element:<Rider/> ,
-      // },
-      
+      {
+        path: "/rider",
+        element: (
+          <PrivateRoutes>
+            <BeARider />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/send-parcel",
+        element: (
+          <PrivateRoutes>
+            <SendParcel />
+          </PrivateRoutes>
+        ),
+        loader: () =>
+          fetch("/public/data/warehouses.json").then((res) => res.json()),
+      },
     ],
   },
   {
@@ -52,16 +68,30 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/login",
-        Component:Login,
+        Component: Login,
       },
       {
         path: "/register",
-        Component:Register,
+        Component: Register,
       },
       {
         path: "/forgot-password",
-        Component:ForgotPassword,
+        Component: ForgotPassword,
       },
-    ]
-  }
+    ],
+  },
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRoutes>
+        <DashboardLayout />
+      </PrivateRoutes>
+    ),
+    children: [
+      {
+        path: "my-parcel",
+        Component: MyParcel,
+      },
+    ],
+  },
 ]);

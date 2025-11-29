@@ -24,8 +24,7 @@ const Brand = () => {
           loop={true}
           slidesPerView={4}
           grabCursor={true}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
+        
           autoplay={{
             delay: 1000,
             disableOnInteraction: false,
@@ -33,8 +32,8 @@ const Brand = () => {
                 modules={[Autoplay]}
              
         >
-          {brands.map((brand, index) => (
-            <SwiperSlide key={{ index }}>
+          {brands.map((brand) => (
+            <SwiperSlide key={ brand.id }>
               <img src={brand} alt="brands_logo" />
             </SwiperSlide>
           ))}

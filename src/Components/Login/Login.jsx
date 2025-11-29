@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
@@ -13,12 +13,14 @@ const Login = () => {
   } = useForm();
 
   const { signInUser, signInGoogle } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleLogin = (data) => {
-    console.log(data);
     signInUser(data.email, data.password)
       .then((result) => {
-        console.log(result.user);
+        const redirectPath = location?.state?.from?.pathname || "/";
+        navigate(redirectPath, { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -28,11 +30,10 @@ const Login = () => {
   const handleLoginWithGoogle = () => {
     signInGoogle()
       .then((result) => {
-        console.log(result.user);
+        const redirectPath = location?.state?.from?.pathname || "/";
+        navigate(redirectPath, { replace: true });
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -149,7 +150,7 @@ const Login = () => {
 
               {/* Google Login */}
               <button
-                type="submit"
+                type="button"
                 onClick={handleLoginWithGoogle}
                 className="w-full border border-gray-300 text-gray-700 font-medium py-3.5 rounded-xl hover:bg-gray-50 transition flex items-center justify-center gap-3"
               >
@@ -178,6 +179,7 @@ const Login = () => {
               <p className="text-center text-sm text-gray-600 mt-6">
                 Don't have an account?{" "}
                 <Link
+                  state={location.state}
                   to="/register"
                   className="font-semibold text-indigo-600 hover:text-indigo-700"
                 >
